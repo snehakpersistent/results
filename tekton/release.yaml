@@ -21,12 +21,12 @@ spec:
   params:
     - name: repo
       description: Repo URL to clone.
-      default: https://github.com/tektoncd/results
+      default: https://github.com/snehakpersistent/results
     - name: revision
       description: The Git revision to checkout.
       default: ppc-support
     - name: docker_repo
-      default: "ko.local"
+      default: snehak24
     - name: bucket
       description: "GCS bucket/folder to upload configs"
     - name: version
