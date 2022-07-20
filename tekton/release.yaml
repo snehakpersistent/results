@@ -24,7 +24,7 @@ spec:
       default: https://github.com/tektoncd/results
     - name: revision
       description: The Git revision to checkout.
-      default: main
+      default: ppc-support
     - name: docker_repo
       default: "ko.local"
     - name: bucket
