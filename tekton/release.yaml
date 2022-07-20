@@ -47,7 +47,7 @@ spec:
         - name: output
           workspace: ws
     - name: publish-image
-      runAfter: [unit-tests]
+      runAfter: [checkout]
       taskSpec:
         params:
           - name: repo
