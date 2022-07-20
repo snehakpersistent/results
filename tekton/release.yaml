@@ -46,28 +46,6 @@ spec:
       workspaces:
         - name: output
           workspace: ws
-    - name: unit-tests
-      runAfter: [checkout]
-      taskRef:
-        name: golang-test
-      params:
-        - name: package
-          value: $(workspaces.source.path)/...
-      workspaces:
-        - name: source
-          workspace: ws
-    - name: unit-tests-ppc64le
-      runAfter: [checkout]
-      taskRef:
-        name: golang-test
-      params:
-        - name: package
-          value: $(workspaces.source.path)/...
-        - name: GOARCH
-          value: ppc64le
-      workspaces:
-        - name: source
-          workspace: ws
     - name: publish-image
       runAfter: [unit-tests]
       taskSpec:
@@ -83,13 +61,11 @@ spec:
             image: gcr.io/tekton-releases/dogfooding/ko-gcloud@sha256:763e9474f0e722f00add5785a9cdccd9a001072978d86e962a52f45fccb46529
             workingDir: $(workspaces.source.path)
             script: |
-              gcloud auth list
-              gcloud auth configure-docker gcr.io,us-docker.pkg.dev
 
               $(workspaces.source.path)/release/release.sh
             env:
               - name: KO_DOCKER_REPO
-                value: "$(params.repo)"
+                value: "snehak24"
       params:
         - name: repo
           value: $(params.docker_repo)
